@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataMan Practice</title>
+</head>
+<body>
+    <h1>DataMan Practice</h1>
+
+    <h2>Answer the Question</h2>
+
+    <p>{{ question }}</p>
+
+    <p>Attempts used: {{ progress.attempts_used }} / 2</p>
+
+    {% if progress.message %}
+        <p>{{ progress.message }}</p>
+    {% endif %}
+
+    {% if not progress.completed %}
+        <form action="/answer" method="POST">
+            <label for="answer">Your answer:</label>
+            <input type="text" id="answer" name="answer" required>
+            <button type="submit">Submit Answer</button>
+        </form>
+    {% else %}
+        <p>Question completed!</p>
+    {% endif %}
+
+    <form action="/reset" method="POST">
+        <button type="submit">Reset Practice</button>
+    </form>
+</body>
+</html>
